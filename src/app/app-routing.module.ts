@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CustomersComponent } from './customers/customers.component';
-import { CustomersGridComponent } from './customers-grid/customers-grid.component';
-import { CustomersEditComponent } from './customers-edit/customers-edit.component';
+import { CustomersComponent } from './Components/customers/customers.component';
+import { CustomersGridComponent } from './Components/customers-grid/customers-grid.component';
+import { CustomersEditComponent } from './Components/customers-edit/customers-edit.component';
 
 const routes: Routes = [
   { path: '', component: CustomersComponent, pathMatch: 'full' },

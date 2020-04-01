@@ -5,9 +5,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CustomersComponent } from './customers/customers.component';
-import { CustomersGridComponent } from './customers-grid/customers-grid.component';
-import { CustomersEditComponent } from './customers-edit/customers-edit.component';
+import { CustomersComponent } from './Components/customers/customers.component';
+import { CustomersGridComponent } from './Components/customers-grid/customers-grid.component';
+import { CustomersEditComponent } from './Components/customers-edit/customers-edit.component';
+import { DataServiceService } from './Services/data-service.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { CustomersEditComponent } from './customers-edit/customers-edit.componen
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [DataServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
