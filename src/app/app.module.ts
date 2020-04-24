@@ -8,7 +8,8 @@ import { AppComponent } from './app.component';
 import { CustomersComponent } from './Components/customers/customers.component';
 import { CustomersGridComponent } from './Components/customers-grid/customers-grid.component';
 import { CustomersEditComponent } from './Components/customers-edit/customers-edit.component';
-import { DataServiceService } from './Services/data-service.service';
+import { DataService } from './Services/data-service.service';
+
 
 @NgModule({
   declarations: [
@@ -19,9 +20,10 @@ import { DataServiceService } from './Services/data-service.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [DataServiceService],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
