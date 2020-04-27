@@ -11,7 +11,8 @@ import { DataService } from '../../Services/data-service.service';
   styleUrls: ['./customers.component.css']
 })
 export class CustomersComponent implements OnInit {
-  customers: Observable<ICustomer[]>;
+  customers: ICustomer[] = [];
+  errorMessage: string;
 
   constructor(private dataService: DataService) { }
 
@@ -20,9 +21,9 @@ export class CustomersComponent implements OnInit {
   }
 
   getCustomers() {
-    this.customers = this.dataService.getCustomers();
-    var test = this.dataService.getCustomers().subscribe(val => console.log(val));
-    console.log(test);
+    this.dataService.getCustomers().subscribe({
+      next: customersArray => this.customers = customersArray,
+      error: err => this.errorMessage = err
+    });
   }
-
 }
