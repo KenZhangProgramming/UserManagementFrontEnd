@@ -13,10 +13,12 @@ import { DataService } from '../../Services/data-service.service';
 export class CustomersComponent implements OnInit {
   customers: ICustomer[] = [];
   errorMessage: string;
+  title: string;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.title = 'Customers';
     this.getCustomers();
   }
 
