@@ -9,6 +9,7 @@
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Address</th>
+                            <th>Number of Orders</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -18,6 +19,7 @@
                             <td>{{customer.firstName}}</td>
                             <td>{{customer.lastName}}</td>
                             <td>{{customer.address}}</td>
+                            <td>{{customer.orderCount}}</td>
                         </tr>
                         <tr *ngIf="!customers.length">
                             <td>&nbsp;</td>
