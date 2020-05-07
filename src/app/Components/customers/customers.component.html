@@ -1,12 +1,18 @@
 <div class="customers view indent">
-  <div class="container">
-      <header>
-          <h3>
-              <span class="glyphicon glyphicon-user"></span>
-              {{ title }}
-          </h3>
-      </header>
-  
-      <app-customers-grid [customers]="customers"></app-customers-grid>
-  </div>
+    <div class="container">
+        <header>
+            <h3>
+                <span class="glyphicon glyphicon-user"></span>
+                {{ title }}
+            </h3>
+        </header>
+        <div class="row">
+            <div class="col-md-8">
+            </div>
+            <div class="col-md-4">
+                <a class="btn btn-default" [routerLink]="['/customers', '0']">Add New Customer</a>
+            </div>
+        </div>
+        <app-customers-grid [customers]="customers"></app-customers-grid>
+    </div>
 </div>
