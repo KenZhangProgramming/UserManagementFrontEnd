@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable, } from 'rxjs';
-import { map, catchError, retry} from 'rxjs/operators';
+import { map, catchError, retry } from 'rxjs/operators';
 import { ICustomer, IOrder, IProvince } from '../shared/interfaces';
 import { environment } from '../../environments/environment';
 
@@ -12,6 +12,8 @@ import { environment } from '../../environments/environment';
 export class DataService {
   baseUrl = environment.apiUrl;
   baseCustomersUrl = this.baseUrl + 'customers';
+  baseProvincesUrl = this.baseUrl + 'provinces';
+
 
 
   constructor(private http: HttpClient) { }
@@ -23,6 +25,24 @@ export class DataService {
         catchError(this.handleError)
       );
   }
+
+  
+  getCustomer(id: string): Observable<ICustomer> {
+    return this.http.get<ICustomer>(this.baseCustomersUrl + '/' + id)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
+
+  getProvinces(): Observable<IProvince[]> {
+    return this.http.get<IProvince[]>(this.baseProvincesUrl)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  }
+
 
 
   private handleError(error: HttpErrorResponse) {
