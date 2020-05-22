@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable, } from 'rxjs';
 import { map, catchError, retry } from 'rxjs/operators';
-import { ICustomer, IOrder, IProvince } from '../shared/interfaces';
+import { ICustomer, IOrder, IProvince, ICustomerResponse} from '../shared/interfaces';
 import { environment } from '../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -43,7 +44,27 @@ export class DataService {
       )
   }
 
+  updateCustomer(customer: ICustomer) : Observable<ICustomer> {
+    return this.http.put<ICustomerResponse>(this.baseCustomersUrl + '/' + customer.id, customer) 
+        .pipe(
+            map((data) => {
+                   console.log('updateCustomer status: ' + data.status);
+                   return data.customer;
+               }),
+            catchError(this.handleError)
+        );
+  }
 
+  insertCustomer(customer: ICustomer) : Observable<ICustomer> {
+    return this.http.post<ICustomerResponse>(this.baseCustomersUrl, customer)
+        .pipe(                   
+            map((data) => {
+                   console.log('insertCustomer status: ' + data.status);
+                   return data.customer;
+               }),
+            catchError(this.handleError)
+        );
+}
 
   private handleError(error: HttpErrorResponse) {
     console.error('server error:', error);

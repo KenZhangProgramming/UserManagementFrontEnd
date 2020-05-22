@@ -23,3 +23,8 @@ export interface IOrder {
     quantity: number;
     customerId?: string;
 }
+
+export interface ICustomerResponse {
+    status: boolean;
+    customer: ICustomer;
+}
