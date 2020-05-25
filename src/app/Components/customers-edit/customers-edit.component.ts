@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../../Services/data-service.service';
 import { ICustomer, IProvince } from '../../Shared/interfaces';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-customers-edit',
@@ -10,7 +12,7 @@ import { ICustomer, IProvince } from '../../Shared/interfaces';
 })
 export class CustomersEditComponent implements OnInit {
 
-
+  customerForm: FormGroup;
   customer: ICustomer = {
     firstName: '',
     lastName: '',
@@ -27,7 +29,8 @@ export class CustomersEditComponent implements OnInit {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private dataService: DataService) { }
+              private dataService: DataService,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     let id = this.route.snapshot.params['id'];
@@ -45,6 +48,17 @@ export class CustomersEditComponent implements OnInit {
       },
         (err: any) => console.log(err));
   }
+
+  buildForm() {
+    this.customerForm = this.formBuilder.group({
+      firstName:  [this.customer.firstName, Validators.required],
+      lastName:   [this.customer.lastName, Validators.required],
+      gender:     [this.customer.gender, Validators.required],
+      email:      [this.customer.email, Validators.required],
+      address:    [this.customer.address, Validators.required],
+      provinceId: [this.customer.provinceId, Validators.required],
+    });
+}
 
   getProvinces() {
     this.dataService.getProvinces().subscribe((provinces: IProvince[]) => this.provinces = provinces);

@@ -10,7 +10,6 @@ import { CustomersGridComponent } from './Components/customers-grid/customers-gr
 import { CustomersEditComponent } from './Components/customers-edit/customers-edit.component';
 import { DataService } from './Services/data-service.service';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +20,8 @@ import { DataService } from './Services/data-service.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

@@ -6,7 +6,7 @@
         </h3>
     </header>
     <br />
-    <form [formGroup]="customerForm" (ngSubmit)="submit(customerForm)" class="editForm" novalidate>
+    <form [formGroup]="customerForm" (ngSubmit)="submit()" class="editForm" novalidate>
       <div class="form-group">
         <label>First Name</label>
         <input type="text" class="form-control" formControlName="firstName" />
@@ -44,14 +44,9 @@
         <div class="alert alert-danger" [hidden]="customerForm.controls.address.untouched || customerForm.controls.address.valid">Address is required</div>
       </div>
       <div class="form-group">
-        <label>City</label>
-        <input type="text" class="form-control" formControlName="city" />
-        <div class="alert alert-danger" [hidden]="customerForm.controls.city.untouched || customerForm.controls.city.valid">City is required</div>
-      </div>
-      <div class="form-group">
-        <label>State</label>
-        <select class="form-control" formControlName="stateId">
-            <option *ngFor="let state of states" [ngValue]="state.id">{{state.name}}</option>
+        <label>Province</label>
+        <select class="form-control" formControlName="provinceId">
+            <option *ngFor="let province of provinces" [ngValue]="province.id">{{province.name}}</option>
         </select>
       </div>
       <br />
