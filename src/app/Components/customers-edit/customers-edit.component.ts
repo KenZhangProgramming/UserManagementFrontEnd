@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../../Services/data-service.service';
 import { ICustomer, IProvince } from '../../Shared/interfaces';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 
 
 @Component({
@@ -11,7 +11,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./customers-edit.component.css']
 })
 export class CustomersEditComponent implements OnInit {
-
   customerForm: FormGroup;
   customer: ICustomer = {
     firstName: '',
@@ -39,6 +38,7 @@ export class CustomersEditComponent implements OnInit {
       this.getCustomer(id);
     }
     this.getProvinces();
+    this.buildForm();
   }
 
   getCustomer(id: string) {
@@ -56,7 +56,7 @@ export class CustomersEditComponent implements OnInit {
       gender:     [this.customer.gender, Validators.required],
       email:      [this.customer.email, Validators.required],
       address:    [this.customer.address, Validators.required],
-      provinceId: [this.customer.provinceId, Validators.required],
+      provinceId: [this.customer.provinceId, Validators.required]
     });
 }
 
@@ -64,23 +64,30 @@ export class CustomersEditComponent implements OnInit {
     this.dataService.getProvinces().subscribe((provinces: IProvince[]) => this.provinces = provinces);
   }
 
-  submit() {
+  submit({ value, valid }: { value: ICustomer, valid: boolean }) {
+      
+    value.id = this.customer.id;
+    value.zip = this.customer.zip || 0; 
+    // var customer: ICustomer = {
+    //   id: this.customer.id,
+    // };
 
-    if (this.customer.id) {
+    if (value.id) {
 
-      this.dataService.updateCustomer(this.customer)
+      this.dataService.updateCustomer(value)
         .subscribe((customer: ICustomer) => {
           if (customer) {
             this.router.navigate(['/customers']);
-          } else {
+          }
+          else {
             this.errorMessage = 'Unable to save customer';
           }
         },
-          (err: any) => console.log(err));
+        (err) => console.log(err));
 
     } else {
 
-      this.dataService.insertCustomer(this.customer)
+      this.dataService.insertCustomer(value)
         .subscribe((customer: ICustomer) => {
           if (customer) {
             this.router.navigate(['/customers']);
@@ -89,10 +96,10 @@ export class CustomersEditComponent implements OnInit {
             this.errorMessage = 'Unable to add customer';
           }
         },
-          (err: any) => console.log(err));
-
+        (err) => console.log(err));
+        
     }
-  }
+}
 
   cancel(event: Event) {
     event.preventDefault();
