@@ -45,6 +45,7 @@ export class CustomersEditComponent implements OnInit {
     this.dataService.getCustomer(id)
       .subscribe((customer: ICustomer) => {
         this.customer = customer;
+        this.buildForm();
       },
         (err: any) => console.log(err));
   }
