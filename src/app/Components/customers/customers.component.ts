@@ -22,6 +22,13 @@ export class CustomersComponent implements OnInit {
     this.getCustomers();
   }
 
+  filterChanged(filterText: string) {
+    
+
+
+
+  }
+
   getCustomers() {
     this.dataService.getCustomers().subscribe({
       next: customersArray => this.customers = customersArray,

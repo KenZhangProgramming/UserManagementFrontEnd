@@ -8,6 +8,7 @@
         </header>
         <div class="row">
             <div class="col-md-8">
+                <app-filter-textbox (changed)="filterChanged($event)"></app-filter-textbox>
             </div>
             <div class="col-md-4">
                 <a class="btn btn-default" [routerLink]="['/customers', '0']">Add New Customer</a>
