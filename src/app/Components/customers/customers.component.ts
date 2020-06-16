@@ -4,6 +4,7 @@ import { ICustomer, IOrder, IProvince } from '../../Shared/Interfaces';
 import { Observable } from 'rxjs';
 
 import { DataService } from '../../Services/data-service.service';
+import { DataFilterService } from '../../Services/data-filter-service.service';
 
 @Component({
   selector: 'app-customers',
@@ -12,10 +13,12 @@ import { DataService } from '../../Services/data-service.service';
 })
 export class CustomersComponent implements OnInit {
   customers: ICustomer[] = [];
+  filteredCustomers: ICustomer[] = [];
   errorMessage: string;
   title: string;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService,
+    private dataFilter: DataFilterService) { }
 
   ngOnInit(): void {
     this.title = 'Customers';
@@ -23,10 +26,14 @@ export class CustomersComponent implements OnInit {
   }
 
   filterChanged(filterText: string) {
-    
-
-
-
+    if (filterText && this.customers) {
+      let props = 'firstName';
+      this.filteredCustomers = this.dataFilter.filter(this.customers, props, filterText);
+      console.log('test');
+    }
+    else {
+      this.filteredCustomers = this.customers;
+    }
   }
 
   getCustomers() {
