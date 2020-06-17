@@ -29,7 +29,6 @@ export class CustomersComponent implements OnInit {
     if (filterText && this.customers) {
       let props = 'firstName';
       this.filteredCustomers = this.dataFilter.filter(this.customers, props, filterText);
-      console.log('test');
     }
     else {
       this.filteredCustomers = this.customers;
