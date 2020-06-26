@@ -10,6 +10,7 @@ import { CustomersGridComponent } from './Components/customers-grid/customers-gr
 import { CustomersEditComponent } from './Components/customers-edit/customers-edit.component';
 import { DataService } from './Services/data-service.service';
 import { FilterTextboxComponent } from './Shared/Components/filter-textbox/filter-textbox.component';
+import { PaginationComponent } from './Shared/Components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FilterTextboxComponent } from './Shared/Components/filter-textbox/filte
     CustomersComponent,
     CustomersGridComponent,
     CustomersEditComponent,
-    FilterTextboxComponent
+    FilterTextboxComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

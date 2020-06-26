@@ -24,6 +24,11 @@ export interface IOrder {
     customerId?: string;
 }
 
+export interface IPagedResults<T> {
+    results: T;
+    totalRecords: number;
+}
+
 export interface ICustomerResponse {
     status: boolean;
     customer: ICustomer;

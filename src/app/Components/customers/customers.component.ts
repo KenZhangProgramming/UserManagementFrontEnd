@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ICustomer, IOrder, IProvince } from '../../Shared/Interfaces';
+import { ICustomer, IOrder, IProvince, IPagedResults } from '../../Shared/Interfaces';
 import { Observable } from 'rxjs';
 
 import { DataService } from '../../Services/data-service.service';
@@ -17,12 +17,15 @@ export class CustomersComponent implements OnInit {
   errorMessage: string;
   title: string;
 
+  totalRecords: number = 0;
+  pageSize: number = 2;
+
   constructor(private dataService: DataService,
     private dataFilter: DataFilterService) { }
 
   ngOnInit(): void {
     this.title = 'Customers';
-    this.getCustomers();
+    this.getCustomersPage(1);
   }
 
   filterChanged(filterText: string) {
@@ -35,10 +38,17 @@ export class CustomersComponent implements OnInit {
     }
   }
 
-  getCustomers() {
-    this.dataService.getCustomers().subscribe({
-      next: customersArray => this.customers = customersArray,
-      error: err => this.errorMessage = err
-    });
+  pageChanged(page: number) {
+    this.getCustomersPage(page);
+  }
+
+  getCustomersPage(page: number) {
+    this.dataService.getCustomersPage((page - 1) * this.pageSize, this.pageSize)
+        .subscribe((response: IPagedResults<ICustomer[]>) => {
+          this.customers = this.filteredCustomers = response.results;
+          this.totalRecords = response.totalRecords;
+        },
+        (err: any) => console.log(err),
+        () => console.log('getCustomersPage() retrieved customers'));
   }
 }

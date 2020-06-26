@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable, } from 'rxjs';
 import { map, catchError, retry } from 'rxjs/operators';
-import { ICustomer, IOrder, IProvince, ICustomerResponse } from '../shared/interfaces';
+import { ICustomer, IOrder, IProvince, ICustomerResponse, IPagedResults } from '../shared/interfaces';
 import { environment } from '../../environments/environment';
 
 
@@ -27,6 +27,23 @@ export class DataService {
       );
   }
 
+
+  getCustomersPage(page: number, pageSize: number) : Observable<IPagedResults<ICustomer[]>>{
+    return this.http.get<ICustomer[]>(`${this.baseCustomersUrl}/page/${page}/${pageSize}`, {observe: 'response'})
+            .pipe(            
+                map((res) => {
+                    //Need to observe response in order to get to this header (see {observe: 'response'} above)
+                    const totalRecords = +res.headers.get('x-inlinecount');
+                    let customers = res.body as ICustomer[];
+                    //this.calculateCustomersOrderTotal(customers);
+                    return {
+                        results: customers,
+                        totalRecords: totalRecords
+                    };
+                }),
+                catchError(this.handleError)
+            );
+  }
 
   getCustomer(id: string): Observable<ICustomer> {
     return this.http.get<ICustomer>(this.baseCustomersUrl + '/' + id)
