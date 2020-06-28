@@ -11,8 +11,6 @@ import { CustomersEditComponent } from './Components/customers-edit/customers-ed
 import { DataService } from './Services/data-service.service';
 import { FilterTextboxComponent } from './Shared/Components/filter-textbox/filter-textbox.component';
 import { PaginationComponent } from './Shared/Components/pagination/pagination.component';
-import { ProductsComponent } from './Components/products/products.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,16 +19,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CustomersGridComponent,
     CustomersEditComponent,
     FilterTextboxComponent,
-    PaginationComponent,
-    ProductsComponent
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule,
-    BrowserAnimationsModule
+    FormsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
