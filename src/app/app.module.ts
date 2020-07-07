@@ -11,6 +11,13 @@ import { CustomersEditComponent } from './Components/customers-edit/customers-ed
 import { DataService } from './Services/data-service.service';
 import { FilterTextboxComponent } from './Shared/Components/filter-textbox/filter-textbox.component';
 import { PaginationComponent } from './Shared/Components/pagination/pagination.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductsComponent } from './Components/products/products.component';
+import { MatSliderModule } from '@angular/material/slider';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { AccountPageComponent } from './Components/account-page/account-page.component';
+
+
 
 @NgModule({
   declarations: [
@@ -19,14 +26,19 @@ import { PaginationComponent } from './Shared/Components/pagination/pagination.c
     CustomersGridComponent,
     CustomersEditComponent,
     FilterTextboxComponent,
-    PaginationComponent
+    PaginationComponent,
+    ProductsComponent,
+    AccountPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    DragDropModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
