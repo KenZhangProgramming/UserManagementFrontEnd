@@ -10,6 +10,14 @@ export interface ICustomer {
     OrderCount: number;
 }
 
+export interface IProduct {
+    id?: string;
+    Name: string;
+    Quantity: number;
+    Category: string;
+    CustomerId?: number;
+}
+
 export interface IProvince {
     id?: string;
     abbreviation: string;

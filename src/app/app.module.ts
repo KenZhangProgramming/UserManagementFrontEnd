@@ -15,7 +15,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductsComponent } from './Components/products/products.component';
 import { MatSliderModule } from '@angular/material/slider';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatTableModule} from '@angular/material/table';
 import { AccountPageComponent } from './Components/account-page/account-page.component';
+import { CustomerItemsComponent } from './Components/customer-items/customer-items.component';
+import { TransactionsComponent } from './Components/transactions/transactions.component';
+
 
 
 
@@ -28,7 +33,9 @@ import { AccountPageComponent } from './Components/account-page/account-page.com
     FilterTextboxComponent,
     PaginationComponent,
     ProductsComponent,
-    AccountPageComponent
+    AccountPageComponent,
+    CustomerItemsComponent,
+    TransactionsComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +45,9 @@ import { AccountPageComponent } from './Components/account-page/account-page.com
     FormsModule,
     BrowserAnimationsModule,
     MatSliderModule,
-    DragDropModule
+    DragDropModule,
+    MatTabsModule,
+    MatTableModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

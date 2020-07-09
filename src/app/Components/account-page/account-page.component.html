@@ -31,6 +31,27 @@
         </body>
     </div>
 
-    <div class="col-8">col-9</div>
-    <div class="col-1">col-1</div>
+    <div class="col-8">
+        <mat-tab-group mat-align-tabs="center">
+            <mat-tab label="Customer Items">
+                <app-customer-items [products]="products" ></app-customer-items>
+            </mat-tab>
+            <mat-tab label="Transactions">  
+                <app-transactions></app-transactions>
+            </mat-tab>
+        </mat-tab-group>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
 </div>
