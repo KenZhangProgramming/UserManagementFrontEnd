@@ -20,9 +20,7 @@ import {MatTableModule} from '@angular/material/table';
 import { AccountPageComponent } from './Components/account-page/account-page.component';
 import { CustomerItemsComponent } from './Components/customer-items/customer-items.component';
 import { TransactionsComponent } from './Components/transactions/transactions.component';
-
-
-
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -47,7 +45,8 @@ import { TransactionsComponent } from './Components/transactions/transactions.co
     MatSliderModule,
     DragDropModule,
     MatTabsModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
