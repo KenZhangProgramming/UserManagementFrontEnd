@@ -21,6 +21,8 @@ import { AccountPageComponent } from './Components/account-page/account-page.com
 import { CustomerItemsComponent } from './Components/customer-items/customer-items.component';
 import { TransactionsComponent } from './Components/transactions/transactions.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { MatIconModule } from '@angular/material/icon';
     DragDropModule,
     MatTabsModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
