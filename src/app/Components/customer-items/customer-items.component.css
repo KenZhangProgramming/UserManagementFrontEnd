@@ -2,18 +2,14 @@
     margin-top: 25pt;
 }
 
-.icon{
-    text-align:center; margin-top:5em
-}
-
-
 .fa-plus:hover{
     background: #125eea;
     cursor: pointer;
 }
 
 .fa-plus{
-	background:#b4b4b4;
+    background:#b4b4b4;
+    margin-top: 25pt;
 }
 .icon{
     text-align:center; margin-top:5em
