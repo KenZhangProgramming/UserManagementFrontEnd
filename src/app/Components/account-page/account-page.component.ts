@@ -18,9 +18,9 @@ export class AccountPageComponent implements OnInit {
   getProducts() {
     this.products = [
       { "id": "1", "Name": "Deer Meat", "Quantity": 2, "Category": "Hunting", "CustomerId": 1},
-      { "id": "2", "Name": "Bass", "Quantity": 3, "Category": "Fishing", "CustomerId": 2},
-      { "id": "3", "Name": "Goose", "Quantity": 4, "Category": "Fishing", "CustomerId": 3},
-      { "id": "1", "Name": "Perch", "Quantity": 5, "Category": "Fishing", "CustomerId": 4}
+      { "id": "2", "Name": "Bass", "Quantity": 3, "Category": "Fishing", "CustomerId": 1},
+      { "id": "3", "Name": "Goose", "Quantity": 4, "Category": "Fishing", "CustomerId": 1},
+      { "id": "4", "Name": "Perch", "Quantity": 5, "Category": "Fishing", "CustomerId": 1}
     ];
   }
 

@@ -15,11 +15,15 @@ export class CustomerItemsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  add(){
+    const product = {"id": "1", "Name": "", "Quantity": null, "Category": "", "CustomerId": 1};
+    this.products.push(product);
+  }
+
   updateList(id: string, property: string, textcontent: string) {
     const editField = textcontent;
     const targetProduct = this.products.filter(product => product.id === id);
     targetProduct[property] = textcontent;
-    console.log(this.products);
   }
 
 
