@@ -8,11 +8,22 @@ import { IProduct } from 'src/app/Shared/Interfaces';
 })
 export class CustomerItemsComponent implements OnInit {
   @Input() products: IProduct[] = [];
+  editField: string;
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.products)
   }
 
+  updateList(id: string, property: string, textcontent: string) {
+    const editField = textcontent;
+    const targetProduct = this.products.filter(product => product.id === id);
+    targetProduct[property] = textcontent;
+    console.log(this.products);
+  }
+
+
+  changeValue(id: string, textcontent: string) {
+    this.editField = textcontent;
+  }
 }
