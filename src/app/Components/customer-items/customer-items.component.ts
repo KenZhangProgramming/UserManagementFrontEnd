@@ -20,6 +20,15 @@ export class CustomerItemsComponent implements OnInit {
     this.products.push(product);
   }
 
+  
+  remove(product: IProduct){
+    const productIndex = this.products.findIndex(p => p === product);
+    if (productIndex > -1) {
+      this.products.splice(productIndex, 1);
+   }
+    console.log("test");
+  }
+
   updateList(id: string, property: string, textcontent: string) {
     const editField = textcontent;
     const targetProduct = this.products.filter(product => product.id === id);

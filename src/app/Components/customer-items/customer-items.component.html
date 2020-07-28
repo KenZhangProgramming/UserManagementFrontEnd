@@ -10,7 +10,7 @@
         <th scope="col">Name</th>
         <th scope="col">Quantity</th>
         <th scope="col">Category</th>
-        
+        <th scope="col">Remove</th>
       </tr>
     </thead>
     
@@ -19,6 +19,13 @@
         <td (keyup)="changeValue(product.id, $event.target.textContent)" (blur)="updateList(product.id, 'Name', $event.target.textContent)" class="pt-3-half" contenteditable="true">{{ product.Name}}</td>
         <td (keyup)="changeValue(product.id, $event.target.textContent)" (blur)="updateList(product.id, 'Quantity', $event.target.textContent)" class="pt-3-half" contenteditable="true">{{ product.Quantity}}</td>
         <td (keyup)="changeValue(product.id, $event.target.textContent)" (blur)="updateList(product.id, 'Category', $event.target.textContent)" class="pt-3-half" contenteditable="true">{{ product.Category}}</td>
+        <td>
+          <span class="table-remove">
+            <button type="button" (click)="remove(product)"
+              class="btn btn-danger btn-rounded btn-sm my-0">Remove
+            </button>
+          </span>
+        </td>
       </tr>
     </tbody>
   </table>
