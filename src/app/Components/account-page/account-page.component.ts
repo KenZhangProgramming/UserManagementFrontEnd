@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/Shared/Interfaces';
+import { DataService } from '../../Services/data-service.service';
 
 @Component({
   selector: 'app-account-page',
@@ -9,19 +10,18 @@ import { IProduct } from 'src/app/Shared/Interfaces';
 export class AccountPageComponent implements OnInit {
   products: IProduct[] = [];
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.getProducts();
+    this.getCustomerProducts("1");
   }
 
-  getProducts() {
-    this.products = [
-      { "id": "1", "Name": "Deer Meat", "Quantity": 2, "Category": "Hunting", "CustomerId": 1},
-      { "id": "2", "Name": "Bass", "Quantity": 3, "Category": "Fishing", "CustomerId": 1},
-      { "id": "3", "Name": "Goose", "Quantity": 4, "Category": "Fishing", "CustomerId": 1},
-      { "id": "4", "Name": "Perch", "Quantity": 5, "Category": "Fishing", "CustomerId": 1}
-    ];
+  getCustomerProducts(customerId: string) {
+    this.dataService.getCustomerProducts(customerId)
+    .subscribe((products: IProduct[]) => {
+      this.products = products;
+    },
+    (err: any) => console.log(err),
+    () => console.log('getCustomersPage() retrieved customers'));
   }
-
 }
