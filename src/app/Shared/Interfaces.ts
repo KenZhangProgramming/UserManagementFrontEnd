@@ -4,10 +4,13 @@ export interface ICustomer {
     lastName: string;
     email: string;
     address: string;
+    province: IProvince;
     provinceId?: number;
     zip: number;
     gender: string;
-    OrderCount: number;
+    orderCount: number;
+    orders: IOrder[];
+    products: IProduct[];
 }
 
 export interface IProduct {

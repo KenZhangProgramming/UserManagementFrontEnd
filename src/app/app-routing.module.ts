@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: '', component: CustomersComponent, pathMatch: 'full' },
   { path: 'products', component: ProductsComponent},
   { path: 'customers', component: CustomersComponent},
-  { path: 'accountpage', component: AccountPageComponent},
+  { path: 'accountpage/customers/:id', component: AccountPageComponent},
   { path: '', component: CustomersComponent, pathMatch: 'full' },
   { path: 'customers/:id', component: CustomersEditComponent},
   { path: '**', pathMatch: 'full', redirectTo: '/customers'}  

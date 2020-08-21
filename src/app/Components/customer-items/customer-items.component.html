@@ -16,9 +16,9 @@
     
     <tbody>
       <tr *ngFor="let product of products">
-        <td (keyup)="changeValue(product.id, $event.target.textContent)" (blur)="updateList(product.id, 'Name', $event.target.textContent)" class="pt-3-half" contenteditable="true">{{ product.Name}}</td>
-        <td (keyup)="changeValue(product.id, $event.target.textContent)" (blur)="updateList(product.id, 'Quantity', $event.target.textContent)" class="pt-3-half" contenteditable="true">{{ product.Quantity}}</td>
-        <td (keyup)="changeValue(product.id, $event.target.textContent)" (blur)="updateList(product.id, 'Category', $event.target.textContent)" class="pt-3-half" contenteditable="true">{{ product.Category}}</td>
+        <td (keyup)="changeValue(product.id, $event.target.textContent)" (blur)="updateList(product.id, 'Name', $event.target.textContent)" class="pt-3-half" contenteditable="true">{{ product.name}}</td>
+        <td (keyup)="changeValue(product.id, $event.target.textContent)" (blur)="updateList(product.id, 'Quantity', $event.target.textContent)" class="pt-3-half" contenteditable="true">{{ product.quantity}}</td>
+        <td (keyup)="changeValue(product.id, $event.target.textContent)" (blur)="updateList(product.id, 'Category', $event.target.textContent)" class="pt-3-half" contenteditable="true">{{ product.category}}</td>
         <td>
           <span class="table-remove">
             <button type="button" (click)="remove(product)"

@@ -18,8 +18,11 @@ export class CustomersEditComponent implements OnInit {
     gender: '',
     address: '',
     email: '',
-    OrderCount: 0,
-    zip: 0
+    orderCount: 0,
+    zip: 0,
+    province: null,
+    products: null,
+    orders: null
   };
   provinces: IProvince[];
   errorMessage: string;

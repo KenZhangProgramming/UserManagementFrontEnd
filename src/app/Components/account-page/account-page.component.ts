@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from 'src/app/Shared/Interfaces';
+import { IProduct, ICustomer } from 'src/app/Shared/Interfaces';
 import { DataService } from '../../Services/data-service.service';
+import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-account-page',
@@ -9,19 +10,24 @@ import { DataService } from '../../Services/data-service.service';
 })
 export class AccountPageComponent implements OnInit {
   products: IProduct[] = [];
+  customer: ICustomer;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getCustomerProducts("1");
+    let id = this.route.snapshot.params['id'];
+    if (id !== '0') {
+      this.getCustomer(id);
+    }
   }
 
-  getCustomerProducts(customerId: string) {
-    this.dataService.getCustomerProducts(customerId)
-    .subscribe((products: IProduct[]) => {
-      this.products = products;
-    },
-    (err: any) => console.log(err),
-    () => console.log('getCustomersPage() retrieved customers'));
+  getCustomer(id: string) {
+    this.dataService.getCustomer(id)
+      .subscribe((customer: ICustomer) => {
+        this.customer = customer;
+        this.products = customer.products;
+      },
+        (err: any) => console.log(err));
   }
 }

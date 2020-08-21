@@ -14,8 +14,7 @@ export class DataService {
   baseUrl = environment.apiUrl;
   baseCustomersUrl = this.baseUrl + 'customers';
   baseProvincesUrl = this.baseUrl + 'provinces';
-
-
+  baseProductsUrl = this.baseUrl + '/products/customerId';
 
   constructor(private http: HttpClient) { }
 
@@ -88,14 +87,6 @@ export class DataService {
       .pipe(
         catchError(this.handleError)
       );
-  }
-
-  getCustomerProducts(id: string): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(this.baseCustomersUrl + '/' + id)
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    );
   }
 
   private handleError(error: HttpErrorResponse) {
