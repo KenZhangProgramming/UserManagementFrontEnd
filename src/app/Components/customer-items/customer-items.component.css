@@ -1,5 +1,5 @@
 .table{
-    margin-top: 25pt;
+    margin-top: 0pt;
 }
 
 .fa-plus:hover{
@@ -9,9 +9,17 @@
 
 .fa-plus{
     background:#b4b4b4;
-    margin-top: 25pt;
+    margin-top: 20pt;
 }
 .icon{
-    text-align:center; margin-top:5em
+    text-align:center; margin-top:5em;
 }
 
+.fa-stack{
+    float: left;
+}
+
+.button-span{
+    margin-top: 25pt;
+    float: right;
+}

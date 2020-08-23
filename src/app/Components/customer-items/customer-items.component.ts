@@ -20,6 +20,7 @@ export class CustomerItemsComponent implements OnInit {
     this.products.push(product);
   }
 
+  save(){}
   
   remove(product: IProduct){
     const productIndex = this.products.findIndex(p => p === product);

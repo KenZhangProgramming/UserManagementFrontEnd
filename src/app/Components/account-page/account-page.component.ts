@@ -30,4 +30,10 @@ export class AccountPageComponent implements OnInit {
       },
         (err: any) => console.log(err));
   }
+
+
+
+
+
+  
 }
